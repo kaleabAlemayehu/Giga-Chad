@@ -1,0 +1,11 @@
+{
+  "name": "giga-chad",
+  "version": "1.0.0",
+  "description": "bot used to collect files for me form telegram group",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "cipher",
+  "license": "ISC"
+}
