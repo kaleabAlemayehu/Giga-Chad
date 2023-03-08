@@ -2,10 +2,16 @@
   "name": "giga-chad",
   "version": "1.0.0",
   "description": "bot used to collect files for me form telegram group",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node ./index.js",
+    "start": "nodemon ./index.js"
   },
   "author": "cipher",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "grammy": "^1.14.1"
+  }
 }
