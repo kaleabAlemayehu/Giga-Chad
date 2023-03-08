@@ -1,15 +1,7 @@
 // import { File } from "./Models/Files";s
 import { Bot } from "grammy";
 import * as dotenv from "dotenv";
-import mongoose from "mongoose";
 dotenv.config();
-const main = async (connectionStr) => {
-  try {
-    await mongoose.connect(connectionStr);
-  } catch (e) {
-    console.log(e);
-  }
-};
 
 const allowedGroups = [-894217890];
 
@@ -18,17 +10,14 @@ export const msgHandler = async (ctx) => {
     await bot.api.leaveChat(ctx.chat.id);
   }
   if (ctx.message.document) {
-    const newFile = new File({
-      fileName: ctx.message.document.file_name,
-      fileType: ctx.message.document.mime_type,
-      caption: ctx.message.caption,
-      fileId: ctx.message.document.fileId,
-      thumbId: ctx.message.document.thumb.fileId,
-    });
+    try {
+      await bot.api.sendMessage(process.env.BOSS, "the file is document");
+    } catch (e) {
+      console.log(e);
+      await bot.api.sendMessage(`failed because of this error: ${e}`);
+    }
   }
 };
-
-main(process.env.MONGO);
 
 // Create an instance of the `Bot` class and pass your authentication token to it.
 const bot = new Bot(process.env.TOKEN); // <-- put your authentication token between the ""
