@@ -5,9 +5,11 @@ dotenv.config();
 const allowedGroups = [-894217890];
 const checkIfItBoss = async (ctx) => {
   if (ctx.chat.type == "private" && ctx.chat.id == process.env.BOSS) {
-    ctx.reply("hello boss what can i do for you!");
+    await ctx.reply("hello boss what can i do for you!");
   } else if (ctx.chat.type == "private") {
-    ctx.reply("you are not the boss so there is nothing i can do to you!");
+    await ctx.reply(
+      "you are not the boss so there is nothing i can do to you!"
+    );
   }
 };
 const msgHandler = async (ctx) => {
@@ -39,8 +41,8 @@ const bot = new Bot(process.env.TOKEN); // <-- put your authentication token bet
 
 // Handle the /start command.
 // Handle other messages.
-bot.on("message", msgHandler);
 bot.command("start", checkIfItBoss);
+bot.on("message", msgHandler);
 
 // Now that you specified how to handle messages, you can start your bot.
 // This will connect to the Telegram servers and wait for messages.
